@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import the necessary components
+import Header from './components/Header'; // Your header
+import Shop from './components/Shop';     // The shop component
+import ShoppingCart from './components/ShoppingCart'; // Your shopping cart page
+import TrackOrder from './components/TrackOrder'; // Your track order page
+import AboutUs from './components/AboutUs'; 
+import Footer from './components/Footer'; // Optional: Footer component
+import './App.css'; // Global styles
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+
+        <Routes>
+          <Route path="/" element={<Shop />} />
+          
+          <Route path="/cart" element={<ShoppingCart />} />
+          
+          <Route path="/track-order" element={<TrackOrder />} />
+          
+          <Route path="/about" element={<AboutUs />} />
+        </Routes>
+
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
